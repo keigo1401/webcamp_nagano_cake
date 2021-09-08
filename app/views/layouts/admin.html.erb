@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>長野ケーキ：管理者画面</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+
+
+      <nav class="navbar navbar-invrese navbar-fixed-top">
+        <div class="container">
+          <!--左側-->
+          <nav>
+            <ul class="left nav navbar-nav navbar-left">
+              <li><%= link_to "Nagano Cake", admin_root_path %></li>
+            </ul>
+          </nav>
+          <!--右側-->
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "商品一覧", admin_items_path %></li>
+              <li><%= link_to "会員一覧", admin_customers_path %></li>
+              <li><%= link_to "注文履歴一覧", admin_root_path %></li>
+              <li><%= link_to "ジャンル一覧", admin_genres_path %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            </ul>
+          </nav>
+        </div>
+      </nav>
+
+
+      <div class="message">
+        <!--ログイン成功時メッセージ-->
+        <% if notice %>
+        <p><%= notice %></p>
+        <% end %>
+        <!--失敗時メッセージ-->
+        <% if alert %>
+        <p><%= alert %></p>
+        <% end %>
+      </div>
+
+
+    </header>
+
+    <%= yield %>
+  </body>
+</html>

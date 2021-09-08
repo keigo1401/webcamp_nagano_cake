@@ -1,6 +1,18 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def after_sign_up_path_for(resource)
+      case resource
+      when Admin
+          admins_root_path
+      when Public
+          public_root_path
+      end
+  end
+
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope
+
   protected
 
 
@@ -15,5 +27,4 @@ class ApplicationController < ActionController::Base
                                                          :telephone_number,
                                                          :is_active])
   end
-
 end

@@ -3,12 +3,30 @@
   <head>
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
-
+    <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
   <body>
-    <%= yield %>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="left nav navbar-nav navbar-left">
+            <%= link_to root_path do %>
+            <%= image_tag "nagano.png", :size => '200x55' %>
+            <% end %>
+          </ul>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if public_signed_in? %>
+            <li><%= link_to current_public.last_name %></li>
+            <li><%= link_to current_public.first_name %></li>
+            <!--publicのバー書いてる-->
+            <li><%= link_to ""</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   </body>
-</html>
